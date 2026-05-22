@@ -67,7 +67,7 @@ export default function Home() {
         setFbStatus("idle");
         setFbName(""); setFbEmail(""); setFbMessage("");
       }, 2000);
-    } catch (error) {
+    } catch {
       setFbStatus("error");
       setTimeout(() => setFbStatus("idle"), 3000);
     }

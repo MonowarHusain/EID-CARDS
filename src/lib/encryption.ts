@@ -35,7 +35,7 @@ export function decryptMessage(encryptedMessage: string, secretKey: string): str
 
         if (!originalText) return null;
         return originalText;
-    } catch (error) {
+    } catch {
         return null;
     }
 }
