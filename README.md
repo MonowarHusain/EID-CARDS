@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌙 Private Eid Greeting (Eid Capsule)
 
-## Getting Started
+A zero-knowledge, self-destructing digital envelope built to send beautiful, private Eid wishes. Engineered with a premium "Midnight Glass & Gold" aesthetic and uncrackable client-side encryption.
 
-First, run the development server:
+Created by [Monowar Husain](https://www.mono.bro.bd/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Zero-Knowledge Architecture:** Messages are encrypted in the browser using AES-128. The decryption key never touches the server; it is passed exclusively via the URL `#hash`.
+* **Military-Grade Security, Elegant UI:** Raw hexadecimal keys are Base64-encoded to keep sharing links short, clean, and URL-safe.
+* **Auto-Destruction:** Capsules are programmed to expire and vanish from the database after 30 days.
+* **Royal UI/UX:** Built with Tailwind CSS glassmorphism, ambient radial lighting, and physics-based unsealing animations powered by Framer Motion.
+* **Secure Feedback Loop:** Integrated Next.js Server Actions to securely route user feedback directly to a private Discord webhook.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS
+* **Animations:** Framer Motion
+* **Database:** Firebase Firestore
+* **Cryptography:** CryptoJS (AES-128)
+* **Deployment:** Vercel
 
-## Learn More
+## 🚀 Running Locally
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+    git clone https://github.com/MonowarHusain/EID-CARDS.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Set up your `.env.local` file with your Firebase credentials.
 
-## Deploy on Vercel
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔒 How the Encryption Works
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+When a user clicks "Create", the app generates a 128-bit secret key locally. The message is encrypted, and **only the encrypted gibberish** is sent to Firestore. The secret key is appended to the final URL as a hash (e.g., `/#u9Vb-X7zP_L2Q`). Because browsers do not send URL hashes to servers, the database remains completely blind to the contents of the message.
